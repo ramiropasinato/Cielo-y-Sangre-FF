@@ -42,38 +42,38 @@
     <UnityVersion>6000.0.62f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Analyzer Include="C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
+    <Analyzer Include="C:\Users\ramap\.vscode\extensions\visualstudiotoolsforunity.vstuc-1.3.1\Analyzers\Microsoft.Unity.Analyzers.dll" />
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.0.62f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.SourceGenerators.dll" />
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.0.62f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.0.62f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\imputs\InteraccionNPC.cs" />
-    <Compile Include="Assets\imputs\ArbolDeLaVida.cs" />
-    <Compile Include="Assets\imputs\BaldosaJefe.cs" />
-    <Compile Include="Assets\imputs\GestorDeBatallas.cs" />
+    <Compile Include="Assets\imputs\NPC\InteraccionNPC.cs" />
+    <Compile Include="Assets\imputs\Dialogos\GestorDeDialogos.cs" />
+    <Compile Include="Assets\imputs\sistemas\InterruptorCombates.cs" />
+    <Compile Include="Assets\imputs\Gestores\GestorCaminos.cs" />
+    <Compile Include="Assets\imputs\batallas\BaldosaJefe.cs" />
+    <Compile Include="Assets\imputs\batallas\EncuentrosAleatorios.cs" />
+    <Compile Include="Assets\imputs\NPC\NPCFinal.cs" />
+    <Compile Include="Assets\imputs\Gestores\GestorDeBatallas.cs" />
     <Compile Include="Assets\imputs\VolverAJugar.cs" />
-    <Compile Include="Assets\imputs\EncuentrosAleatorios.cs" />
-    <Compile Include="Assets\imputs\MovimientoJugador.cs" />
-    <Compile Include="Assets\imputs\NPCFinal.cs" />
-    <Compile Include="Assets\imputs\InicialDialogo.cs" />
-    <Compile Include="Assets\imputs\GestorEvento2.cs" />
-    <Compile Include="Assets\imputs\GestorDeDialogos.cs" />
+    <Compile Include="Assets\imputs\sistemas\SistemaDeVida.cs" />
     <Compile Include="Assets\imputs\UIMapa.cs" />
-    <Compile Include="Assets\imputs\BatallaObligatoria.cs" />
-    <Compile Include="Assets\imputs\AliadoSeguidor.cs" />
-    <Compile Include="Assets\imputs\GestorPrologo.cs" />
-    <Compile Include="Assets\imputs\SeguirCamara.cs" />
-    <Compile Include="Assets\imputs\SeguirKiyomi.cs" />
-    <Compile Include="Assets\imputs\GestorCaminos.cs" />
+    <Compile Include="Assets\imputs\Gestores\GestorPrologo.cs" />
+    <Compile Include="Assets\imputs\batallas\BatallaObligatoria2.cs" />
+    <Compile Include="Assets\imputs\batallas\BaldosaLobos.cs" />
+    <Compile Include="Assets\imputs\sistemas\ArbolDeLaVida.cs" />
     <Compile Include="Assets\imputs\AparicionAliado.cs" />
     <Compile Include="Assets\imputs\EstadoJuego.cs" />
-    <Compile Include="Assets\imputs\SistemaDeVida.cs" />
-    <Compile Include="Assets\imputs\ControlDeZonas.cs" />
-    <Compile Include="Assets\imputs\BatallaObligatoria2.cs" />
+    <Compile Include="Assets\imputs\MenuCombate.cs" />
+    <Compile Include="Assets\imputs\Gestores\GestorEvento2.cs" />
+    <Compile Include="Assets\imputs\sistemas\ControlDeZonas.cs" />
+    <Compile Include="Assets\imputs\batallas\BatallaObligatoria.cs" />
+    <Compile Include="Assets\imputs\sistemas\SeguirKiyomi.cs" />
     <Compile Include="Assets\DatosGlobales.cs" />
-    <Compile Include="Assets\imputs\InterruptorCombates.cs" />
-    <Compile Include="Assets\imputs\BaldosaLobos.cs" />
+    <Compile Include="Assets\imputs\Dialogos\InicialDialogo.cs" />
+    <Compile Include="Assets\imputs\sistemas\SeguirCamara.cs" />
+    <Compile Include="Assets\imputs\sistemas\MovimientoJugador.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

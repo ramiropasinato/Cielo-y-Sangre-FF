@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
   - enabled: 1
-    path: Assets/Batalla.unity
+    path: Assets/Scenes/scenes/Batalla.unity
     guid: 094cdb3c77414d74aabd57d52c521a9f
   - enabled: 1
     path: Assets/Batalla 1.unity
@@ -18,16 +18,16 @@ EditorBuildSettings:
     path: Assets/Batalla 2.unity
     guid: 60c125fe5ffb2d348a3d74f82e493b75
   - enabled: 1
-    path: Assets/BatallaLobos.unity
+    path: Assets/Scenes/scenes/BatallaLobos.unity
     guid: 2b72bf45ef0542042bbb9f872a5900e0
   - enabled: 1
-    path: Assets/BatallaFinal.unity
+    path: Assets/Scenes/scenes/BatallaFinal.unity
     guid: 822012deb24a78b40bf3a107e369fbb9
   - enabled: 1
-    path: Assets/Victory.unity
+    path: Assets/Scenes/scenes/Victory.unity
     guid: df73a063606742c43b7fdae9dffc587c
   - enabled: 1
-    path: Assets/Derrota.unity
+    path: Assets/Scenes/scenes/Derrota.unity
     guid: c8408b2375bb44a44b209e11dff3b5ec
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
