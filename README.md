@@ -26,7 +26,7 @@ empezado por el norte, donde se encuentra alli el Rey del Norte, un gran amigo d
 - Muy leal
 
 # Pueblo
-Un lugar amplio con diversas casas con deversos NPC's los cuales nos daran misiones
+Un lugar amplio con diversas casas con diversos NPC's los cuales nos daran misiones
 Casas las cuales se puede entrar para habalar con ellos y iniciar/terminar misiones
 
 # Zona de Misiones
