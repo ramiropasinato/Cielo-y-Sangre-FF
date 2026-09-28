@@ -60,6 +60,7 @@
     <Compile Include="Assets\imputs\sistemas\SistemaDeVida.cs" />
     <Compile Include="Assets\imputs\UIMapa.cs" />
     <Compile Include="Assets\imputs\Gestores\GestorPrologo.cs" />
+    <Compile Include="Assets\imputs\HUDMapa.cs" />
     <Compile Include="Assets\imputs\batallas\BatallaObligatoria2.cs" />
     <Compile Include="Assets\imputs\batallas\BaldosaLobos.cs" />
     <Compile Include="Assets\imputs\sistemas\ArbolDeLaVida.cs" />

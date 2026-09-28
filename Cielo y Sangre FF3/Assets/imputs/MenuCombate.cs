@@ -27,33 +27,40 @@ public class MenuCombate : MonoBehaviour
     {
         GestorDeBatalla gestor = FindFirstObjectByType<GestorDeBatalla>();
 
-        // ACA ESTA LA MAGIA: El menú funciona en el turno 0 (Kiyomi) y el 1 (Aliado)
+        // ACA SE BORRA EL TEXTO ROJO SI EL GESTOR DESTRUYO AL LOBO
+        if (gestor.scriptEnemigo1 == null && textosEnemigos.Length > 0 && textosEnemigos[0] != null) Destroy(textosEnemigos[0].gameObject);
+        if (gestor.scriptEnemigo2 == null && textosEnemigos.Length > 1 && textosEnemigos[1] != null) Destroy(textosEnemigos[1].gameObject);
+        if (gestor.scriptEnemigo3 == null && textosEnemigos.Length > 2 && textosEnemigos[2] != null) Destroy(textosEnemigos[2].gameObject);
+
         if (gestor.turnoActual != 0 && gestor.turnoActual != 1) return; 
 
         if (eligiendoEnemigo)
         {
             if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
             {
-                indiceEnemigo++;
-                if (indiceEnemigo >= textosEnemigos.Length) indiceEnemigo = 0;
+                int intentos = 0;
+                do {
+                    indiceEnemigo++;
+                    if (indiceEnemigo >= textosEnemigos.Length) indiceEnemigo = 0;
+                    intentos++;
+                } while (textosEnemigos[indiceEnemigo] == null && intentos < 10); // Saltea los borrados
                 MoverFlechitaEnemigo();
             }
             else if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
             {
-                indiceEnemigo--;
-                if (indiceEnemigo < 0) indiceEnemigo = textosEnemigos.Length - 1;
+                int intentos = 0;
+                do {
+                    indiceEnemigo--;
+                    if (indiceEnemigo < 0) indiceEnemigo = textosEnemigos.Length - 1;
+                    intentos++;
+                } while (textosEnemigos[indiceEnemigo] == null && intentos < 10); // Saltea los borrados
                 MoverFlechitaEnemigo();
             }
 
             if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space))
             {
                 gestor.enemigoSeleccionado = indiceEnemigo; 
-                
-                // Elegimos con cuánta fuerza pegar dependiendo de quién ataca
-                int danoParaPegar = 0;
-                if (gestor.turnoActual == 0) danoParaPegar = gestor.danoKiyomi;
-                if (gestor.turnoActual == 1) danoParaPegar = gestor.danoAliado;
-
+                int danoParaPegar = (gestor.turnoActual == 0) ? gestor.danoKiyomi : gestor.danoAliado;
                 gestor.Atacar(danoParaPegar); 
                 
                 eligiendoEnemigo = false;
@@ -85,18 +92,21 @@ public class MenuCombate : MonoBehaviour
         {
             if (indiceActual == 0) 
             {
-                eligiendoEnemigo = true; 
+                // Buscamos al primer enemigo que quede vivo para ponerle la flechita
                 indiceEnemigo = 0;
-                MoverFlechitaEnemigo();
+                while (indiceEnemigo < textosEnemigos.Length && textosEnemigos[indiceEnemigo] == null)
+                {
+                    indiceEnemigo++;
+                }
+                
+                if (indiceEnemigo < textosEnemigos.Length)
+                {
+                    eligiendoEnemigo = true; 
+                    MoverFlechitaEnemigo();
+                }
             }
-            else if (indiceActual == 1) 
-            {
-                gestor.Defender();
-            }
-            else if (indiceActual == 2) 
-            {
-                gestor.Curar();
-            }
+            else if (indiceActual == 1) gestor.Defender();
+            else if (indiceActual == 2) gestor.Curar();
         }
     }
 
@@ -107,6 +117,9 @@ public class MenuCombate : MonoBehaviour
 
     void MoverFlechitaEnemigo()
     {
-        flechita.position = new Vector3(textosEnemigos[indiceEnemigo].position.x - separacionXEnemigos, textosEnemigos[indiceEnemigo].position.y, flechita.position.z);
+        if (textosEnemigos[indiceEnemigo] != null)
+        {
+            flechita.position = new Vector3(textosEnemigos[indiceEnemigo].position.x - separacionXEnemigos, textosEnemigos[indiceEnemigo].position.y, flechita.position.z);
+        }
     }
 }

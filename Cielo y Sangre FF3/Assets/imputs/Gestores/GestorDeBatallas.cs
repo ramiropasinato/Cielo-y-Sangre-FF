@@ -9,7 +9,7 @@ public class GestorDeBatalla : MonoBehaviour
 
     [Header("Personajes de Batalla")]
     public SistemaDeVida scriptKiyomi;
-    public SistemaDeVida scriptAliado; //Para saber la vida del Aliado
+    public SistemaDeVida scriptAliado; 
     public SistemaDeVida scriptEnemigo1;
     public SistemaDeVida scriptEnemigo2;
     public SistemaDeVida scriptEnemigo3; 
@@ -22,11 +22,8 @@ public class GestorDeBatalla : MonoBehaviour
     public int curacion = 15;
 
     public int turnoActual = 0;
-    
-    // Separamos la defensa para saber a quién le hacen la mitad de daño
     private bool defiendeKiyomi = false;
     private bool defiendeAliado = false;
-
     public int enemigoSeleccionado = 0; 
 
     void Start()
@@ -40,11 +37,6 @@ public class GestorDeBatalla : MonoBehaviour
 
         if (spriteAliadoBatalla != null) spriteAliadoBatalla.SetActive(EstadoJuego.aliadoDesbloqueado);
         IniciarTurnoKiyomi();
-    }
-
-    void Update()
-    {
-        // Vaciamos el Update, ahora las teclas las lee el MenuCombate
     }
 
     void IniciarTurnoKiyomi()
@@ -65,18 +57,9 @@ public class GestorDeBatalla : MonoBehaviour
     {
         textoTurnos.text = "¡Ataque!";
 
-        if (enemigoSeleccionado == 0 && scriptEnemigo1 != null && scriptEnemigo1.hpActual > 0)
-        {
-            scriptEnemigo1.RecibirDano(dano);
-        }
-        else if (enemigoSeleccionado == 1 && scriptEnemigo2 != null && scriptEnemigo2.hpActual > 0)
-        {
-            scriptEnemigo2.RecibirDano(dano);
-        }
-        else if (enemigoSeleccionado == 2 && scriptEnemigo3 != null && scriptEnemigo3.hpActual > 0)
-        {
-            scriptEnemigo3.RecibirDano(dano);
-        }
+        if (enemigoSeleccionado == 0 && scriptEnemigo1 != null && scriptEnemigo1.hpActual > 0) scriptEnemigo1.RecibirDano(dano);
+        else if (enemigoSeleccionado == 1 && scriptEnemigo2 != null && scriptEnemigo2.hpActual > 0) scriptEnemigo2.RecibirDano(dano);
+        else if (enemigoSeleccionado == 2 && scriptEnemigo3 != null && scriptEnemigo3.hpActual > 0) scriptEnemigo3.RecibirDano(dano);
 
         SiguienteTurno();
     }
@@ -113,14 +96,16 @@ public class GestorDeBatalla : MonoBehaviour
 
     void SiguienteTurno()
     {
+        // Revisamos si algun enemigo murio en este turno y lo destruimos
+        LimpiarMuertos();
+
         if (RevisarVictoria()) return;
 
         int turnoQuePaso = turnoActual;
-        turnoActual = 99; // Bloqueamos el menú por un segundo
+        turnoActual = 99; 
 
         if (turnoQuePaso == 0)
         {
-            // Solo le damos el turno al aliado si esta desbloqueado y vivo
             if (EstadoJuego.aliadoDesbloqueado && scriptAliado != null && scriptAliado.hpActual > 0) 
             {
                 Invoke("IniciarTurnoAliado", 1f);
@@ -138,16 +123,22 @@ public class GestorDeBatalla : MonoBehaviour
         }
     }
 
+    // ACA DESTRUIMOS EL DIBUJO DEL LOBO SI SU VIDA LLEGA A 0
+    void LimpiarMuertos()
+    {
+        if (scriptEnemigo1 != null && scriptEnemigo1.hpActual <= 0) Destroy(scriptEnemigo1.gameObject);
+        if (scriptEnemigo2 != null && scriptEnemigo2.hpActual <= 0) Destroy(scriptEnemigo2.gameObject);
+        if (scriptEnemigo3 != null && scriptEnemigo3.hpActual <= 0) Destroy(scriptEnemigo3.gameObject);
+    }
+
     void AtaqueEnemigo()
     {
         if ((scriptEnemigo1 != null && scriptEnemigo1.hpActual > 0) ||
             (scriptEnemigo2 != null && scriptEnemigo2.hpActual > 0) ||
             (scriptEnemigo3 != null && scriptEnemigo3.hpActual > 0))
         {
-            // Tiramos una moneda al aire (0 o 1)
             int dadoAleatorio = Random.Range(0, 2); 
             
-            // Si sale 1 y el Aliado existe, está desbloqueado y tiene vida: le pegan a él.
             if (dadoAleatorio == 1 && EstadoJuego.aliadoDesbloqueado && scriptAliado != null && scriptAliado.hpActual > 0)
             {
                 int danoFinal = defiendeAliado ? danoEnemigos / 2 : danoEnemigos;
@@ -162,10 +153,7 @@ public class GestorDeBatalla : MonoBehaviour
             }
         }
 
-        if (scriptKiyomi.hpActual > 0)
-        {
-            Invoke("IniciarTurnoKiyomi", 1.5f);
-        }
+        if (scriptKiyomi.hpActual > 0) Invoke("IniciarTurnoKiyomi", 1.5f);
         else
         {
             turnoActual = 4; 

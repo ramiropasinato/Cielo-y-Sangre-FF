@@ -4,7 +4,7 @@ public class IniciadorDeDialogo : MonoBehaviour
 {
     [Header("Textos")]
     [TextArea]
-    public string[] lineasDeTexto; // Podés agregar 1, 2 o 20 páginas de texto acá
+    public string[] lineasDeTexto;
 
     [Header("Configuración")]
     public bool leerConTeclaE = false; // Tildar para NPCs. Destildar para que salte solo al pisar.
