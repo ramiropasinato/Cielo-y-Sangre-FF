@@ -20,7 +20,7 @@ empezado por el norte, donde se encuentra alli el Rey del Norte, un gran amigo d
 - Joven de pelo negro y ojos dorados
 - Una princesa, usa una espada y es una gran peleadora
   
-- Janiro (Aliado)
+- Tanatos (Aliado)
 -	Ayuda a kiyomi de unos caballeros enemigos
 -	Es un gran guerrero
 - Muy leal
